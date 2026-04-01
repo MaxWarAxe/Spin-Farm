@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dfhmfksre87lu"]
+
+[ext_resource type="Script" uid="uid://b26246cdcoqyo" path="res://components/growth_component.gd" id="1_tiu0w"]
+
+[node name="GrowthComponent" type="Node2D" unique_id=952938563 node_paths=PackedStringArray("growth_timer")]
+script = ExtResource("1_tiu0w")
+growth_timer = NodePath("")

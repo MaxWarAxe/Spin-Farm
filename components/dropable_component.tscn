@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dugvwehhar0ut"]
+
+[ext_resource type="Script" uid="uid://5gfbc1a4tg22" path="res://components/dropable_component.gd" id="1_x6oeq"]
+[ext_resource type="PackedScene" uid="uid://d23hbph6vgppe" path="res://scenes/pickup_plant.tscn" id="2_l3wgh"]
+
+[node name="DropableComponent" type="Node2D" unique_id=1010961725]
+script = ExtResource("1_x6oeq")
+drop_item = ExtResource("2_l3wgh")

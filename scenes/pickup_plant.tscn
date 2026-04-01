@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://d23hbph6vgppe"]
+
+[ext_resource type="Script" uid="uid://bqn1cx3hnpc5v" path="res://scripts/pickup_plant.tscn.gd" id="1_4sola"]
+[ext_resource type="Texture2D" uid="uid://cxn0ahrdxcqn0" path="res://sprites/Basic Plants.png" id="1_btbbm"]
+[ext_resource type="PackedScene" uid="uid://r23tk23wwet4" path="res://components/pickup_component.tscn" id="2_4sola"]
+[ext_resource type="AudioStream" uid="uid://bcjkeknnp04wo" path="res://pickup.mp3" id="2_o5ehf"]
+[ext_resource type="Script" uid="uid://dhcednenv82e7" path="res://components/pickup_mouse_component.gd" id="3_aiup6"]
+[ext_resource type="Script" uid="uid://dw6qlikwpplej" path="res://components/sound_spawner.gd" id="5_o5ehf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_btbbm"]
+
+[node name="Area2D" type="Area2D" unique_id=2140591465]
+scale = Vector2(4, 4)
+script = ExtResource("1_4sola")
+
+[node name="BasicPlants" type="Sprite2D" parent="." unique_id=785775333]
+texture = ExtResource("1_btbbm")
+region_enabled = true
+region_rect = Rect2(80, 0, 16, 16)
+
+[node name="PickupComponent" parent="." unique_id=78416233 instance=ExtResource("2_4sola")]
+script = ExtResource("3_aiup6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupComponent" unique_id=2023529960]
+shape = SubResource("RectangleShape2D_btbbm")
+
+[node name="SoundSpawner" type="Node2D" parent="." unique_id=732094951]
+script = ExtResource("5_o5ehf")
+sound = ExtResource("2_o5ehf")
+
+[connection signal="mouse_entered" from="PickupComponent" to="PickupComponent" method="_on_mouse_entered"]
+[connection signal="picked_up" from="PickupComponent" to="." method="_on_pickup_component_picked_up"]
+[connection signal="picked_up" from="PickupComponent" to="SoundSpawner" method="_on_pickup_component_picked_up"]

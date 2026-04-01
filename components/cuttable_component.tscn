@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://oyat7qpi3o8l"]
+
+[ext_resource type="Script" uid="uid://dgqiplq8dn26d" path="res://components/cuttable_component.gd" id="1_k1c8x"]
+
+[node name="CuttableComponent" type="Area2D" unique_id=1340469460]
+script = ExtResource("1_k1c8x")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

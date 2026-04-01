@@ -1,0 +1,133 @@
+[gd_scene format=3 uid="uid://bv1v15oxmncvn"]
+
+[ext_resource type="Texture2D" uid="uid://cxn0ahrdxcqn0" path="res://sprites/Basic Plants.png" id="1_fi0kw"]
+[ext_resource type="Script" uid="uid://u50sefrhds7e" path="res://scripts/plant.gd" id="1_odjdt"]
+[ext_resource type="Script" uid="uid://c7nivdia86kua" path="res://scenes/plant_view.gd" id="2_ptog4"]
+[ext_resource type="Shader" uid="uid://dpspjh4mhm4jq" path="res://shaders/wind.gdshader" id="3_2riao"]
+[ext_resource type="Script" uid="uid://b26246cdcoqyo" path="res://components/growth_component.gd" id="3_a88lo"]
+[ext_resource type="Script" uid="uid://ciqa85esaly07" path="res://components/harvestable_component.gd" id="5_toh6u"]
+[ext_resource type="Script" uid="uid://cmpf2ojmppp45" path="res://scenes/grass.gd" id="6_2riao"]
+[ext_resource type="AudioStream" uid="uid://csc2mvy5gpxxj" path="res://leaf.wav" id="6_68tkh"]
+[ext_resource type="PackedScene" uid="uid://oyat7qpi3o8l" path="res://components/cuttable_component.tscn" id="6_ptog4"]
+[ext_resource type="PackedScene" uid="uid://dugvwehhar0ut" path="res://components/dropable_component.tscn" id="10_68tkh"]
+[ext_resource type="Script" uid="uid://cp4cb5mxhtj17" path="res://components/dropable_fly_component.gd" id="11_cqtiq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_68tkh"]
+shader = ExtResource("3_2riao")
+shader_parameter/start_y = 0.3
+shader_parameter/strength = 0.15
+shader_parameter/curve_scale = 1.5
+shader_parameter/speed = 2.0
+shader_parameter/wind_start = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbetm"]
+atlas = ExtResource("1_fi0kw")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qljma"]
+atlas = ExtResource("1_fi0kw")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4oa58"]
+atlas = ExtResource("1_fi0kw")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3syqp"]
+atlas = ExtResource("1_fi0kw")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k54vv"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbetm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qljma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4oa58")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3syqp")
+}],
+"loop": true,
+"name": &"plant",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_2riao"]
+colors = PackedColorArray(0.64355725, 0.38889396, 0.23387975, 1, 0.851769, 0.8517689, 0.85176885, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_68tkh"]
+gradient = SubResource("Gradient_2riao")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cqtiq"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3(0, -1.38, 0)
+initial_velocity_max = 76.29
+gravity = Vector3(0, 98, 0)
+scale_max = 2.76
+color = Color(0.98979646, 1, 0.60498273, 1)
+color_ramp = SubResource("GradientTexture1D_68tkh")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8qc6y"]
+
+[node name="Node2D" type="Node2D" unique_id=2086713414]
+script = ExtResource("1_odjdt")
+
+[node name="PlantView" type="Node2D" parent="." unique_id=1547114363 node_paths=PackedStringArray("animated_sprite", "growth_component", "particles")]
+script = ExtResource("2_ptog4")
+animated_sprite = NodePath("AnimatedSprite2D")
+growth_component = NodePath("../GrowthComponent")
+particles = NodePath("GPUParticles2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PlantView" unique_id=773593051]
+material = SubResource("ShaderMaterial_68tkh")
+sprite_frames = SubResource("SpriteFrames_k54vv")
+animation = &"plant"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="PlantView" unique_id=1957954052]
+emitting = false
+amount = 32
+lifetime = 0.45
+one_shot = true
+explosiveness = 0.31
+process_material = SubResource("ParticleProcessMaterial_cqtiq")
+
+[node name="GrowthComponent" type="Node2D" parent="." unique_id=1546711267 node_paths=PackedStringArray("growth_timer")]
+script = ExtResource("3_a88lo")
+growth_time = 1
+growth_timer = NodePath("Timer")
+metadata/_custom_type_script = "uid://b26246cdcoqyo"
+
+[node name="Timer" type="Timer" parent="GrowthComponent" unique_id=105167724]
+
+[node name="Leaf" type="AudioStreamPlayer" parent="." unique_id=193408600 node_paths=PackedStringArray("harvest_component")]
+stream = ExtResource("6_68tkh")
+script = ExtResource("6_2riao")
+harvest_component = NodePath("../HarvestableComponent")
+
+[node name="HarvestableComponent" type="Node2D" parent="." unique_id=806840149 node_paths=PackedStringArray("growth_component", "cuttable_component", "dropable_component")]
+script = ExtResource("5_toh6u")
+growth_component = NodePath("../GrowthComponent")
+cuttable_component = NodePath("../CuttableComponent")
+dropable_component = NodePath("../DropableComponent")
+metadata/_custom_type_script = "uid://ciqa85esaly07"
+
+[node name="CuttableComponent" parent="." unique_id=1340469460 instance=ExtResource("6_ptog4")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CuttableComponent" unique_id=499300894]
+shape = SubResource("RectangleShape2D_8qc6y")
+
+[node name="DropableComponent" parent="." unique_id=1010961725 instance=ExtResource("10_68tkh")]
+script = ExtResource("11_cqtiq")
+speed = 400
+spread = 10
