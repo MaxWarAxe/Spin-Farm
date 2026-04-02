@@ -104,6 +104,7 @@ process_material = SubResource("ParticleProcessMaterial_cqtiq")
 
 [node name="GrowthComponent" type="Node2D" parent="." unique_id=1546711267 node_paths=PackedStringArray("growth_timer")]
 script = ExtResource("3_a88lo")
+growth_time = 1
 growth_timer = NodePath("Timer")
 metadata/_custom_type_script = "uid://b26246cdcoqyo"
 
@@ -128,5 +129,5 @@ shape = SubResource("RectangleShape2D_8qc6y")
 
 [node name="DropableComponent" parent="." unique_id=1010961725 instance=ExtResource("10_68tkh")]
 script = ExtResource("11_cqtiq")
-speed = 400
+speed = 70
 spread = 10

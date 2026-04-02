@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://dlt1a5lp3lueq" path="res://sprites/Basic tools and meterials.png" id="3_pjtfg"]
 [ext_resource type="Script" uid="uid://bceuglg4q1ad" path="res://components/scythe_component.gd" id="4_2rqvt"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ov54h"]
-size = Vector2(9.750799, 41.86258)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pjtfg"]
+size = Vector2(8.961525, 4.16764)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2rqvt"]
 atlas = ExtResource("3_pjtfg")
@@ -23,34 +23,36 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pjtfg"]
-size = Vector2(40.47558, 20.367432)
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_2rqvt"]
+points = PackedVector2Array(13.600327, -10.088919, 14.961303, -0.7536198, 11.379718, -0.33858597, 10.66553, -8.911217)
 
-[node name="Node2D" type="RigidBody2D" unique_id=1880219104]
+[node name="Node2D" type="RigidBody2D" unique_id=1880219104 node_paths=PackedStringArray("pivot_point")]
 rotation = 3.234095
 script = ExtResource("1_ov54h")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1548740225]
-position = Vector2(6.544368, -0.4196596)
-rotation = -0.9599311
-shape = SubResource("RectangleShape2D_ov54h")
+pivot_point = NodePath("Marker2D")
 
 [node name="Item141_png2" type="Sprite2D" parent="." unique_id=1839740964]
 visible = false
 position = Vector2(7.9141307, 20.355993)
-scale = Vector2(1.421875, 1.421875)
 texture = ExtResource("1_oh1d7")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1642362300]
-position = Vector2(-5.2150326, 19.565365)
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1769665337]
+
+[node name="Area2D" type="Area2D" parent="Marker2D" unique_id=110161629]
+position = Vector2(1.0303869, -8.3349285)
+script = ExtResource("4_2rqvt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D/Area2D" unique_id=1786337842]
+position = Vector2(1.5295961, -5.1633644)
+rotation = 0.57072264
+shape = SubResource("RectangleShape2D_pjtfg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Marker2D" unique_id=1642362300]
+position = Vector2(1.1414356, -8.242734)
 rotation = 0.88662726
-scale = Vector2(4.337, 4.337)
 sprite_frames = SubResource("SpriteFrames_35dfx")
 flip_h = true
 
-[node name="Area2D" type="Area2D" parent="." unique_id=110161629]
-script = ExtResource("4_2rqvt")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1786337842]
-position = Vector2(4.9786234, -0.46185288)
-shape = SubResource("RectangleShape2D_pjtfg")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1548740225]
+rotation = -0.95993084
+shape = SubResource("ConvexPolygonShape2D_2rqvt")

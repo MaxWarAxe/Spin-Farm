@@ -2,5 +2,9 @@ extends PickupComponent
 class_name PickupMouseComponent
 
 
-func _on_mouse_entered() -> void:
-	pickup()
+
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if area is PickingComponent:
+		pickup()

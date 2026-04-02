@@ -8,9 +8,10 @@
 [ext_resource type="Script" uid="uid://dw6qlikwpplej" path="res://components/sound_spawner.gd" id="5_o5ehf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_btbbm"]
+size = Vector2(14.75, 14.75)
 
 [node name="Area2D" type="Area2D" unique_id=2140591465]
-scale = Vector2(4, 4)
+scale = Vector2(2, 2)
 script = ExtResource("1_4sola")
 
 [node name="BasicPlants" type="Sprite2D" parent="." unique_id=785775333]
@@ -28,6 +29,6 @@ shape = SubResource("RectangleShape2D_btbbm")
 script = ExtResource("5_o5ehf")
 sound = ExtResource("2_o5ehf")
 
-[connection signal="mouse_entered" from="PickupComponent" to="PickupComponent" method="_on_mouse_entered"]
+[connection signal="area_entered" from="PickupComponent" to="PickupComponent" method="_on_area_entered"]
 [connection signal="picked_up" from="PickupComponent" to="." method="_on_pickup_component_picked_up"]
 [connection signal="picked_up" from="PickupComponent" to="SoundSpawner" method="_on_pickup_component_picked_up"]
