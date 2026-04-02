@@ -9,4 +9,5 @@ func _process(delta: float) -> void:
 	velocity += G*delta
 
 func _on_pickup_component_picked_up() -> void:
+	Global.add_gold(1)
 	queue_free()

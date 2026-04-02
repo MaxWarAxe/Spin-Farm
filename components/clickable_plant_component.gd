@@ -1,0 +1,2 @@
+extends ClickableComponent
+class_name ClickablePlantComponent

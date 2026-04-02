@@ -104,7 +104,6 @@ process_material = SubResource("ParticleProcessMaterial_cqtiq")
 
 [node name="GrowthComponent" type="Node2D" parent="." unique_id=1546711267 node_paths=PackedStringArray("growth_timer")]
 script = ExtResource("3_a88lo")
-growth_time = 1
 growth_timer = NodePath("Timer")
 metadata/_custom_type_script = "uid://b26246cdcoqyo"
 

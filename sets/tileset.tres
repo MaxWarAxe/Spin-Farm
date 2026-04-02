@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bv1v15oxmncvn" path="res://scenes/plant.tscn" id="7_jymwk"]
 [ext_resource type="Texture2D" uid="uid://bk4ul4rhlmnvx" path="res://sprites/Wooden House.png" id="8_mi3nt"]
 [ext_resource type="Texture2D" uid="uid://dudrolutfsa76" path="res://sprites/Wooden_House_Roof_Tilset.png" id="9_832b0"]
+[ext_resource type="PackedScene" uid="uid://hhmepgtg2c0o" path="res://scenes/seed.tscn" id="9_km6wq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nakos"]
 texture = ExtResource("1_8385w")
@@ -447,6 +448,7 @@ texture = ExtResource("6_cwmnr")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_p7tei"]
 scenes/1/scene = ExtResource("7_jymwk")
+scenes/2/scene = ExtResource("9_km6wq")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c70he"]
 texture = ExtResource("8_mi3nt")

@@ -2,6 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://bmf31mho1mjjt" path="res://addons/sprout_lands_ui/content/sprout_lands_theme.tres" id="1_rtouq"]
 [ext_resource type="Texture2D" uid="uid://b8om256muliyl" path="res://UI/coins_shine.png" id="2_filc1"]
+[ext_resource type="Script" uid="uid://b7e56u4x7740g" path="res://UI/control.gd" id="2_nh5hm"]
 
 [sub_resource type="Animation" id="Animation_ncust"]
 length = 0.001
@@ -95,6 +96,11 @@ region = Rect2(96, 0, 16, 14)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1r6xj"]
 animations = [{
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nh5hm")
@@ -122,7 +128,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Control" type="Control" unique_id=361783153]
+[node name="Camera2D" type="Camera2D" unique_id=1187432763]
+position = Vector2(577, 319)
+
+[node name="Control" type="Control" parent="." unique_id=361783153]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -130,36 +139,40 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_rtouq")
+script = ExtResource("2_nh5hm")
 
-[node name="Panel" type="Panel" parent="." unique_id=877825057]
+[node name="Panel" type="Panel" parent="Control" unique_id=877825057]
 layout_mode = 0
-offset_left = 15.0
-offset_top = 26.0
-offset_right = 174.0
-offset_bottom = 612.1361
+offset_left = -555.0
+offset_top = -306.0
+offset_right = -396.0
+offset_bottom = 280.1361
 theme = ExtResource("1_rtouq")
 
-[node name="Panel" type="Panel" parent="Panel" unique_id=1812123018]
+[node name="Panel" type="Panel" parent="Control/Panel" unique_id=1812123018]
 layout_mode = 0
 offset_left = 22.0
 offset_top = -11.0
 offset_right = 139.0
 offset_bottom = 33.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=253624887]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control" unique_id=253624887]
 libraries/ = SubResource("AnimationLibrary_n77p4")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1288300625]
-position = Vector2(62, 37)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control" unique_id=1288300625]
+position = Vector2(-510.00003, -295)
 scale = Vector2(2.0714288, 2.0714288)
 sprite_frames = SubResource("SpriteFrames_1r6xj")
 
-[node name="Label" type="Label" parent="." unique_id=854713024]
+[node name="Label" type="Label" parent="Control" unique_id=854713024]
 layout_mode = 0
-offset_left = 82.0
-offset_top = 16.0
-offset_right = 151.0
-offset_bottom = 58.0
+offset_left = -491.0
+offset_top = -316.0
+offset_right = -422.0
+offset_bottom = -274.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=452699105]
