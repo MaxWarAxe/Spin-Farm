@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://b7e56u4x7740g" path="res://UI/control.gd" id="2_nh5hm"]
 [ext_resource type="Texture2D" uid="uid://do2hc6wgivrqy" path="res://UI/coins_rotate.png" id="3_er0wr"]
 [ext_resource type="FontFile" uid="uid://dgri8tyapxmis" path="res://fonts/VaporVibes.otf" id="5_c20no"]
+[ext_resource type="PackedScene" uid="uid://dqwjcccmd5ffi" path="res://UI/upgrades.tscn" id="6_1xo2p"]
 
 [sub_resource type="Animation" id="Animation_ncust"]
 length = 0.001
@@ -254,12 +255,17 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="LabelSettings" id="LabelSettings_1xo2p"]
+font_size = 31
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
 [node name="Camera2D" type="Camera2D" unique_id=1187432763]
 position = Vector2(576, 316)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1009812198]
 
-[node name="Control" type="Control" parent="CanvasLayer" unique_id=361783153]
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=361783153 node_paths=PackedStringArray("upgrades")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -272,13 +278,14 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_rtouq")
 script = ExtResource("2_nh5hm")
+upgrades = NodePath("upgrades")
 
 [node name="Panel" type="Panel" parent="CanvasLayer/Control" unique_id=877825057]
 layout_mode = 0
 offset_left = 34.0
 offset_top = 26.0
 offset_right = 193.0
-offset_bottom = 76.0
+offset_bottom = 124.0
 theme = ExtResource("1_rtouq")
 
 [node name="Panel" type="Panel" parent="CanvasLayer/Control/Panel" unique_id=1812123018]
@@ -287,6 +294,17 @@ offset_left = 22.0
 offset_top = -11.0
 offset_right = 139.0
 offset_bottom = 33.0
+
+[node name="Button" type="Button" parent="CanvasLayer/Control/Panel" unique_id=890253593]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 46.0
+offset_right = 140.0
+offset_bottom = 86.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("5_c20no")
+theme_override_font_sizes/font_size = 20
+text = "UPGRADES"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Control" unique_id=253624887]
 libraries/ = SubResource("AnimationLibrary_n77p4")
@@ -306,5 +324,14 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_fonts/font = ExtResource("5_c20no")
 theme_override_font_sizes/font_size = 36
 text = "0"
+label_settings = SubResource("LabelSettings_1xo2p")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="upgrades" parent="CanvasLayer/Control" unique_id=1335508404 instance=ExtResource("6_1xo2p")]
+visible = false
+layout_mode = 1
+offset_top = 1.0
+offset_bottom = 1.0
+
+[connection signal="pressed" from="CanvasLayer/Control/Panel/Button" to="CanvasLayer/Control" method="_on_button_pressed"]

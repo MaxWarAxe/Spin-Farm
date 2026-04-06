@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dg6c7h2t4d38w"]
+
+[ext_resource type="Shader" uid="uid://dvdxuvhr6qokm" path="res://shaders/stroke2d.gdshader" id="1_a2dft"]
+
+[resource]
+shader = ExtResource("1_a2dft")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0000000475

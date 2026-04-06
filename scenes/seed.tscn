@@ -4,50 +4,92 @@
 [ext_resource type="Texture2D" uid="uid://cxn0ahrdxcqn0" path="res://sprites/Basic Plants.png" id="1_m0bgt"]
 [ext_resource type="PackedScene" uid="uid://dsn7yw4ej8lxw" path="res://components/clickable_component.tscn" id="2_6mtvd"]
 [ext_resource type="PackedScene" uid="uid://bv1v15oxmncvn" path="res://scenes/plant.tscn" id="2_a7sle"]
+[ext_resource type="Texture2D" uid="uid://v83afevhhnjx" path="res://sprites/shadow.png" id="3_tk4hb"]
+[ext_resource type="Material" uid="uid://dg6c7h2t4d38w" path="res://shaders/outline.tres" id="4_mbx83"]
 [ext_resource type="FontFile" uid="uid://dgri8tyapxmis" path="res://fonts/VaporVibes.otf" id="6_syr4b"]
 [ext_resource type="PackedScene" uid="uid://b1oelqeejgyq" path="res://components/sound_spawner.tscn" id="7_80u5d"]
-[ext_resource type="Script" uid="uid://q3lbldnadql2" path="res://components/show_on_mouse_enter_component.gd" id="7_rc2fx"]
+[ext_resource type="Texture2D" uid="uid://bc05db64v26d1" path="res://sprites/Спрайт-0001.png" id="8_3nwrp"]
 [ext_resource type="Script" uid="uid://wirqkcmy3bdm" path="res://scripts/sound_on_click.gd" id="9_ina5y"]
 [ext_resource type="AudioStream" uid="uid://cbdtek13s83eu" path="res://sounds/cash.wav" id="9_tk4hb"]
+[ext_resource type="PackedScene" uid="uid://cltclghs5du2e" path="res://components/mouse_enter_area_component.tscn" id="11_mbx83"]
+[ext_resource type="Script" uid="uid://cx48jbte0sgb8" path="res://scenes/outline_applier_on_mouse_enter.gd" id="12_3nwrp"]
+[ext_resource type="Script" uid="uid://b305uit7vpdal" path="res://scripts/seed_animationplayer.gd" id="14_nqv7c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_syr4b"]
+size = Vector2(14, 15)
 
 [sub_resource type="LabelSettings" id="LabelSettings_rc2fx"]
 font = ExtResource("6_syr4b")
-font_size = 42
+font_size = 185
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_syr4b"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nqv7c"]
+size = Vector2(14, 15)
+
+[sub_resource type="Animation" id="Animation_3nwrp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CostLabel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0f721"]
+resource_name = "cost_hide"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CostLabel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26666665),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.189, 0.189), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nqv7c"]
+resource_name = "cost_shows"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CostLabel:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.03333333, 0.19999999, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0.1, 0.1), Vector2(0.224, 0.224), Vector2(0.18916087, 0.18916087)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0f721"]
+_data = {
+&"RESET": SubResource("Animation_3nwrp"),
+&"cost_hide": SubResource("Animation_0f721"),
+&"cost_shows": SubResource("Animation_nqv7c")
+}
 
 [node name="Node2D" type="Node2D" unique_id=483126462 node_paths=PackedStringArray("clickable_component")]
 script = ExtResource("1_l184s")
 clickable_component = NodePath("ClickableComponent2")
 plant = ExtResource("2_a7sle")
 
-[node name="BasicPlants" type="Sprite2D" parent="." unique_id=148998291]
-texture = ExtResource("1_m0bgt")
-region_enabled = true
-region_rect = Rect2(0, 0, 16, 16)
-
-[node name="ShowOnMouseEnterComponent" type="Node2D" parent="." unique_id=1732836919 node_paths=PackedStringArray("node")]
-script = ExtResource("7_rc2fx")
-node = NodePath("../Label")
-
-[node name="Label" type="Label" parent="." unique_id=1741220169]
-offset_left = -10.0
-offset_top = -10.0
-offset_right = 68.43138
-offset_bottom = 70.0
-scale = Vector2(0.255, 0.255)
-mouse_default_cursor_shape = 2
-text = "11"
-label_settings = SubResource("LabelSettings_rc2fx")
-horizontal_alignment = 1
-vertical_alignment = 1
-visible_characters_behavior = 2
-
 [node name="ClickableComponent2" parent="." unique_id=971067275 instance=ExtResource("2_6mtvd")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClickableComponent2" unique_id=999835666]
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_syr4b")
 
 [node name="SoundOnBuy" type="Node2D" parent="." unique_id=1336544953 node_paths=PackedStringArray("plant_seed", "sound_spawner")]
@@ -57,3 +99,62 @@ sound_spawner = NodePath("SoundSpawner")
 
 [node name="SoundSpawner" parent="SoundOnBuy" unique_id=1304142336 instance=ExtResource("7_80u5d")]
 sound = ExtResource("9_tk4hb")
+
+[node name="View" type="Node2D" parent="." unique_id=170985793]
+
+[node name="Shadow2" type="Sprite2D" parent="View" unique_id=135244755]
+modulate = Color(1, 1, 1, 0.6313726)
+position = Vector2(-2.3841858e-07, -2.0000005)
+scale = Vector2(0.37109375, 0.37109375)
+texture = ExtResource("3_tk4hb")
+
+[node name="CostLabel" type="Sprite2D" parent="View" unique_id=548212634]
+position = Vector2(-1.0000002, -1.0000004)
+rotation = -1.3508848
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("8_3nwrp")
+offset = Vector2(64.65, 66)
+
+[node name="Label" type="Label" parent="View/CostLabel" unique_id=1741220169]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -162.28386
+offset_top = -110.300644
+offset_right = 165.8185
+offset_bottom = 121.699356
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.7853982
+scale = Vector2(0.255, 0.255)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_default_cursor_shape = 2
+text = "11"
+label_settings = SubResource("LabelSettings_rc2fx")
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters_behavior = 2
+
+[node name="BasicPlants" type="Sprite2D" parent="View" unique_id=148998291]
+texture = ExtResource("1_m0bgt")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="MouseEnterAreaComponent" parent="View" unique_id=1293011592 instance=ExtResource("11_mbx83")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="View/MouseEnterAreaComponent" unique_id=1918389035]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_nqv7c")
+
+[node name="OutlineApplierOnMouseEnter" type="Node2D" parent="View" unique_id=349396645 node_paths=PackedStringArray("mouse_enter_area", "target_node")]
+script = ExtResource("12_3nwrp")
+mouse_enter_area = NodePath("../MouseEnterAreaComponent")
+shader_material = ExtResource("4_mbx83")
+target_node = NodePath("../BasicPlants")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="View" unique_id=498449913 node_paths=PackedStringArray("mouse_enter_area_component")]
+libraries/ = SubResource("AnimationLibrary_0f721")
+script = ExtResource("14_nqv7c")
+mouse_enter_area_component = NodePath("../MouseEnterAreaComponent")

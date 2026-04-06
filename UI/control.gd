@@ -2,7 +2,7 @@ extends Control
 @onready var gold_label: Label = $Label
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-
+@export var upgrades : Control
 
 func _ready() -> void:
 	Global.gold_changed.connect(change_gold)
@@ -20,3 +20,7 @@ func change_gold():
 	animation_player.play("RESET")
 	animation_player.play("rotate")
 	gold_label.text = str(Global.gold) 
+
+
+func _on_button_pressed() -> void:
+	upgrades.visible = !upgrades.visible

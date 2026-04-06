@@ -78,23 +78,34 @@ scale_max = 2.76
 color = Color(0.98979646, 1, 0.60498273, 1)
 color_ramp = SubResource("GradientTexture1D_68tkh")
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kp45f"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 8.07
+gravity = Vector3(0, 0, 0)
+tangential_accel_min = -40.2
+tangential_accel_max = 29.639997
+scale_max = 1.3
+color = Color(0.99215686, 1, 0, 1)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8qc6y"]
 
 [node name="Node2D" type="Node2D" unique_id=2086713414]
 script = ExtResource("1_odjdt")
 
-[node name="PlantView" type="Node2D" parent="." unique_id=1547114363 node_paths=PackedStringArray("animated_sprite", "growth_component", "particles")]
+[node name="PlantView" type="Node2D" parent="." unique_id=1547114363 node_paths=PackedStringArray("animated_sprite", "growth_component", "cut_particles", "growth_particles")]
 script = ExtResource("2_ptog4")
 animated_sprite = NodePath("AnimatedSprite2D")
 growth_component = NodePath("../GrowthComponent")
-particles = NodePath("GPUParticles2D")
+cut_particles = NodePath("CutParticles")
+growth_particles = NodePath("GrowthParticles")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PlantView" unique_id=773593051]
 material = SubResource("ShaderMaterial_68tkh")
 sprite_frames = SubResource("SpriteFrames_k54vv")
 animation = &"plant"
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="PlantView" unique_id=1957954052]
+[node name="CutParticles" type="GPUParticles2D" parent="PlantView" unique_id=1957954052]
 emitting = false
 amount = 32
 lifetime = 0.45
@@ -102,9 +113,17 @@ one_shot = true
 explosiveness = 0.31
 process_material = SubResource("ParticleProcessMaterial_cqtiq")
 
+[node name="GrowthParticles" type="GPUParticles2D" parent="PlantView" unique_id=1093451435]
+visible = false
+position = Vector2(0, -4)
+emitting = false
+amount = 16
+lifetime = 0.3
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_kp45f")
+
 [node name="GrowthComponent" type="Node2D" parent="." unique_id=1546711267 node_paths=PackedStringArray("growth_timer")]
 script = ExtResource("3_a88lo")
-growth_time = 1
 growth_timer = NodePath("Timer")
 metadata/_custom_type_script = "uid://b26246cdcoqyo"
 

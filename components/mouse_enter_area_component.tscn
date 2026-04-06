@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cltclghs5du2e"]
+
+[ext_resource type="Script" uid="uid://clvjvv5dsi63h" path="res://components/mouse_enter_area_component.gd" id="1_fg564"]
+
+[node name="MouseEnterAreaComponent" type="Area2D" unique_id=1293011592]
+script = ExtResource("1_fg564")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

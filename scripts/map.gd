@@ -1,6 +1,7 @@
 extends Node2D
 @export var rigid_object_cursor : PhysicsBody2D
 @export var picking_component : PickingComponent
+@export var mouse_area_component : MouseAreaComponent
 @onready var progress_bar: ProgressBar = $ProgressBar
 @onready var camera: Camera2D = $Camera
 
@@ -16,3 +17,4 @@ func _physics_process(delta: float) -> void:
 	var mouse_position: Vector2 = get_global_mouse_position()
 	rigid_object_cursor.global_position = mouse_position
 	picking_component.global_position = mouse_position
+	mouse_area_component.global_position = mouse_position 
