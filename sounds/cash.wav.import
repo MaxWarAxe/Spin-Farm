@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://csc2mvy5gpxxj"
-path="res://.godot/imported/leaf.wav-0a5c3949f55afba9995e1a330799ccd5.sample"
+uid="uid://cbdtek13s83eu"
+path="res://.godot/imported/cash.wav-0d9402b7c0e6b7a34854a06e0f26e4a2.sample"
 
 [deps]
 
-source_file="res://leaf.wav"
-dest_files=["res://.godot/imported/leaf.wav-0a5c3949f55afba9995e1a330799ccd5.sample"]
+source_file="res://sounds/cash.wav"
+dest_files=["res://.godot/imported/cash.wav-0d9402b7c0e6b7a34854a06e0f26e4a2.sample"]
 
 [params]
 

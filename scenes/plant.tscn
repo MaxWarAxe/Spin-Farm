@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://b26246cdcoqyo" path="res://components/growth_component.gd" id="3_a88lo"]
 [ext_resource type="Script" uid="uid://ciqa85esaly07" path="res://components/harvestable_component.gd" id="5_toh6u"]
 [ext_resource type="Script" uid="uid://cmpf2ojmppp45" path="res://scenes/grass.gd" id="6_2riao"]
-[ext_resource type="AudioStream" uid="uid://csc2mvy5gpxxj" path="res://leaf.wav" id="6_68tkh"]
+[ext_resource type="AudioStream" uid="uid://csc2mvy5gpxxj" path="res://sounds/leaf.wav" id="6_68tkh"]
 [ext_resource type="PackedScene" uid="uid://oyat7qpi3o8l" path="res://components/cuttable_component.tscn" id="6_ptog4"]
 [ext_resource type="PackedScene" uid="uid://dugvwehhar0ut" path="res://components/dropable_component.tscn" id="10_68tkh"]
 [ext_resource type="Script" uid="uid://cp4cb5mxhtj17" path="res://components/dropable_fly_component.gd" id="11_cqtiq"]
@@ -129,5 +129,5 @@ shape = SubResource("RectangleShape2D_8qc6y")
 
 [node name="DropableComponent" parent="." unique_id=1010961725 instance=ExtResource("10_68tkh")]
 script = ExtResource("11_cqtiq")
-speed = 70
+speed = 100
 spread = 10

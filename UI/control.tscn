@@ -2,7 +2,9 @@
 
 [ext_resource type="Theme" uid="uid://bmf31mho1mjjt" path="res://addons/sprout_lands_ui/content/sprout_lands_theme.tres" id="1_rtouq"]
 [ext_resource type="Texture2D" uid="uid://b8om256muliyl" path="res://UI/coins_shine.png" id="2_filc1"]
-[ext_resource type="Script" path="res://UI/control.gd" id="2_nh5hm"]
+[ext_resource type="Script" uid="uid://b7e56u4x7740g" path="res://UI/control.gd" id="2_nh5hm"]
+[ext_resource type="Texture2D" uid="uid://do2hc6wgivrqy" path="res://UI/coins_rotate.png" id="3_er0wr"]
+[ext_resource type="FontFile" uid="uid://dgri8tyapxmis" path="res://fonts/VaporVibes.otf" id="5_c20no"]
 
 [sub_resource type="Animation" id="Animation_ncust"]
 length = 0.001
@@ -29,6 +31,82 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(80, 35.99997)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2.0714288, 2.0714288)]
+}
+
+[sub_resource type="Animation" id="Animation_c20no"]
+resource_name = "rotate"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"rotate"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.03333333, 0.06666666, 0.099999994, 0.13333333, 0.16666669),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.16666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(80, 21.115), Vector2(80, 40), Vector2(80, 36)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D:scale")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.16666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(3, 3), Vector2(1.921, 1.921), Vector2(2.0714288, 2.0714288)]
 }
 
 [sub_resource type="Animation" id="Animation_ejqfc"]
@@ -63,8 +141,33 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n77p4"]
 _data = {
 &"RESET": SubResource("Animation_ncust"),
+&"rotate": SubResource("Animation_c20no"),
 &"shine": SubResource("Animation_ejqfc")
 }
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1r6xj"]
+atlas = ExtResource("3_er0wr")
+region = Rect2(0, 0, 16, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ncust"]
+atlas = ExtResource("3_er0wr")
+region = Rect2(16, 0, 16, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejqfc"]
+atlas = ExtResource("3_er0wr")
+region = Rect2(32, 0, 16, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n77p4"]
+atlas = ExtResource("3_er0wr")
+region = Rect2(48, 0, 16, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1qxal"]
+atlas = ExtResource("3_er0wr")
+region = Rect2(64, 0, 16, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_in571"]
+atlas = ExtResource("3_er0wr")
+region = Rect2(80, 0, 16, 14)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nh5hm"]
 atlas = ExtResource("2_filc1")
@@ -99,6 +202,29 @@ animations = [{
 "frames": [],
 "loop": true,
 "name": &"new_animation",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1r6xj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ncust")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ejqfc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n77p4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1qxal")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_in571")
+}],
+"loop": true,
+"name": &"rotate",
 "speed": 5.0
 }, {
 "frames": [{
@@ -152,7 +278,7 @@ layout_mode = 0
 offset_left = 34.0
 offset_top = 26.0
 offset_right = 193.0
-offset_bottom = 612.1361
+offset_bottom = 76.0
 theme = ExtResource("1_rtouq")
 
 [node name="Panel" type="Panel" parent="CanvasLayer/Control/Panel" unique_id=1812123018]
@@ -172,11 +298,13 @@ sprite_frames = SubResource("SpriteFrames_1r6xj")
 
 [node name="Label" type="Label" parent="CanvasLayer/Control" unique_id=854713024]
 layout_mode = 0
-offset_left = 99.00009
-offset_top = 15.0
-offset_right = 168.00009
-offset_bottom = 57.0
+offset_left = 102.0
+offset_top = 20.0
+offset_right = 168.0
+offset_bottom = 56.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("5_c20no")
+theme_override_font_sizes/font_size = 36
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://b1oelqeejgyq"]
+
+[ext_resource type="Script" uid="uid://dw6qlikwpplej" path="res://components/sound_spawner.gd" id="1_5selj"]
+[ext_resource type="AudioStream" uid="uid://bcjkeknnp04wo" path="res://sounds/pickup.mp3" id="2_rl2hw"]
+
+[node name="SoundSpawner" type="Node2D" unique_id=1304142336]
+script = ExtResource("1_5selj")
+sound = ExtResource("2_rl2hw")

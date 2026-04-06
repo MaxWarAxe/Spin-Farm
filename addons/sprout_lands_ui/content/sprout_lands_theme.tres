@@ -1,5 +1,6 @@
 [gd_resource type="Theme" format=3 uid="uid://bmf31mho1mjjt"]
 
+[ext_resource type="FontFile" uid="uid://bnp0lx7psygq7" path="res://fonts/Snickle-Regular.ttf" id="1_8jv22"]
 [ext_resource type="Texture2D" uid="uid://bef816edvcpop" path="res://addons/sprout_lands_ui/content/assets/Sprite sheet for Basic Pack.png" id="1_35fd2"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w4jy1"]
@@ -292,6 +293,8 @@ expand_margin_bottom = 4.0
 region_rect = Rect2(107, 155, 26, 26)
 
 [resource]
+AcceptDialog/constants/buttons_separation = 10
+AcceptDialog/fonts/title_font = ExtResource("1_8jv22")
 AcceptDialog/styles/panel = SubResource("StyleBoxTexture_w4jy1")
 Button/styles/disabled = SubResource("StyleBoxTexture_ytkor")
 Button/styles/focus = SubResource("StyleBoxTexture_7ctvm")

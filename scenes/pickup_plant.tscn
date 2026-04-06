@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://bqn1cx3hnpc5v" path="res://scripts/pickup_plant.tscn.gd" id="1_4sola"]
 [ext_resource type="Texture2D" uid="uid://cxn0ahrdxcqn0" path="res://sprites/Basic Plants.png" id="1_btbbm"]
 [ext_resource type="PackedScene" uid="uid://r23tk23wwet4" path="res://components/pickup_component.tscn" id="2_4sola"]
-[ext_resource type="AudioStream" uid="uid://bcjkeknnp04wo" path="res://pickup.mp3" id="2_o5ehf"]
 [ext_resource type="Script" uid="uid://dhcednenv82e7" path="res://components/pickup_mouse_component.gd" id="3_aiup6"]
-[ext_resource type="Script" uid="uid://dw6qlikwpplej" path="res://components/sound_spawner.gd" id="5_o5ehf"]
+[ext_resource type="PackedScene" uid="uid://b1oelqeejgyq" path="res://components/sound_spawner.tscn" id="5_aiup6"]
+[ext_resource type="Script" uid="uid://dmwd1ypcxjyr5" path="res://scripts/sound_on_pickup.gd" id="6_o5ehf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_btbbm"]
 size = Vector2(14.75, 14.75)
@@ -19,16 +19,18 @@ texture = ExtResource("1_btbbm")
 region_enabled = true
 region_rect = Rect2(80, 0, 16, 16)
 
-[node name="PickupComponent" parent="." unique_id=78416233 instance=ExtResource("2_4sola")]
+[node name="SoundOnPickup" type="Node2D" parent="." unique_id=1100831810 node_paths=PackedStringArray("pickup_component", "sound_spawner")]
+script = ExtResource("6_o5ehf")
+pickup_component = NodePath("PickupComponent")
+sound_spawner = NodePath("SoundSpawner")
+
+[node name="PickupComponent" parent="SoundOnPickup" unique_id=78416233 instance=ExtResource("2_4sola")]
 script = ExtResource("3_aiup6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupComponent" unique_id=2023529960]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SoundOnPickup/PickupComponent" unique_id=2023529960]
 shape = SubResource("RectangleShape2D_btbbm")
 
-[node name="SoundSpawner" type="Node2D" parent="." unique_id=732094951]
-script = ExtResource("5_o5ehf")
-sound = ExtResource("2_o5ehf")
+[node name="SoundSpawner" parent="SoundOnPickup" unique_id=1304142336 instance=ExtResource("5_aiup6")]
 
-[connection signal="area_entered" from="PickupComponent" to="PickupComponent" method="_on_area_entered"]
-[connection signal="picked_up" from="PickupComponent" to="." method="_on_pickup_component_picked_up"]
-[connection signal="picked_up" from="PickupComponent" to="SoundSpawner" method="_on_pickup_component_picked_up"]
+[connection signal="area_entered" from="SoundOnPickup/PickupComponent" to="SoundOnPickup/PickupComponent" method="_on_area_entered"]
+[connection signal="picked_up" from="SoundOnPickup/PickupComponent" to="." method="_on_pickup_component_picked_up"]

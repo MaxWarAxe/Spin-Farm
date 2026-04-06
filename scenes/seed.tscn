@@ -4,13 +4,23 @@
 [ext_resource type="Texture2D" uid="uid://cxn0ahrdxcqn0" path="res://sprites/Basic Plants.png" id="1_m0bgt"]
 [ext_resource type="PackedScene" uid="uid://dsn7yw4ej8lxw" path="res://components/clickable_component.tscn" id="2_6mtvd"]
 [ext_resource type="PackedScene" uid="uid://bv1v15oxmncvn" path="res://scenes/plant.tscn" id="2_a7sle"]
-[ext_resource type="Script" uid="uid://bxanjy13k81uw" path="res://components/clickable_plant_component.gd" id="3_kq6mk"]
+[ext_resource type="FontFile" uid="uid://dgri8tyapxmis" path="res://fonts/VaporVibes.otf" id="6_syr4b"]
+[ext_resource type="PackedScene" uid="uid://b1oelqeejgyq" path="res://components/sound_spawner.tscn" id="7_80u5d"]
+[ext_resource type="Script" uid="uid://q3lbldnadql2" path="res://components/show_on_mouse_enter_component.gd" id="7_rc2fx"]
+[ext_resource type="Script" uid="uid://wirqkcmy3bdm" path="res://scripts/sound_on_click.gd" id="9_ina5y"]
+[ext_resource type="AudioStream" uid="uid://cbdtek13s83eu" path="res://sounds/cash.wav" id="9_tk4hb"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a7sle"]
+[sub_resource type="LabelSettings" id="LabelSettings_rc2fx"]
+font = ExtResource("6_syr4b")
+font_size = 42
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_syr4b"]
 
 [node name="Node2D" type="Node2D" unique_id=483126462 node_paths=PackedStringArray("clickable_component")]
 script = ExtResource("1_l184s")
-clickable_component = NodePath("ClickableComponent")
+clickable_component = NodePath("ClickableComponent2")
 plant = ExtResource("2_a7sle")
 
 [node name="BasicPlants" type="Sprite2D" parent="." unique_id=148998291]
@@ -18,15 +28,32 @@ texture = ExtResource("1_m0bgt")
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
 
-[node name="ClickableComponent" parent="." unique_id=971067275 instance=ExtResource("2_6mtvd")]
-script = ExtResource("3_kq6mk")
+[node name="ShowOnMouseEnterComponent" type="Node2D" parent="." unique_id=1732836919 node_paths=PackedStringArray("node")]
+script = ExtResource("7_rc2fx")
+node = NodePath("../Label")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickableComponent" unique_id=286025025]
-shape = SubResource("RectangleShape2D_a7sle")
-
-[node name="Label" type="Label" parent="." unique_id=1321089960]
+[node name="Label" type="Label" parent="." unique_id=1741220169]
 offset_left = -10.0
-offset_top = -12.0
-offset_right = 10.0
-offset_bottom = 11.0
-text = "15"
+offset_top = -10.0
+offset_right = 68.43138
+offset_bottom = 70.0
+scale = Vector2(0.255, 0.255)
+mouse_default_cursor_shape = 2
+text = "11"
+label_settings = SubResource("LabelSettings_rc2fx")
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters_behavior = 2
+
+[node name="ClickableComponent2" parent="." unique_id=971067275 instance=ExtResource("2_6mtvd")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickableComponent2" unique_id=999835666]
+shape = SubResource("RectangleShape2D_syr4b")
+
+[node name="SoundOnBuy" type="Node2D" parent="." unique_id=1336544953 node_paths=PackedStringArray("plant_seed", "sound_spawner")]
+script = ExtResource("9_ina5y")
+plant_seed = NodePath("..")
+sound_spawner = NodePath("SoundSpawner")
+
+[node name="SoundSpawner" parent="SoundOnBuy" unique_id=1304142336 instance=ExtResource("7_80u5d")]
+sound = ExtResource("9_tk4hb")
