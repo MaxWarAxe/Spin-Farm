@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://cbdtek13s83eu" path="res://sounds/cash.wav" id="9_tk4hb"]
 [ext_resource type="PackedScene" uid="uid://cltclghs5du2e" path="res://components/mouse_enter_area_component.tscn" id="11_mbx83"]
 [ext_resource type="Script" uid="uid://cx48jbte0sgb8" path="res://scenes/outline_applier_on_mouse_enter.gd" id="12_3nwrp"]
+[ext_resource type="AnimationLibrary" uid="uid://nki7cswru5wd" path="res://anims/cost.res" id="14_0f721"]
 [ext_resource type="Script" uid="uid://b305uit7vpdal" path="res://scripts/seed_animationplayer.gd" id="14_nqv7c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_syr4b"]
@@ -26,60 +27,6 @@ outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nqv7c"]
 size = Vector2(14, 15)
-
-[sub_resource type="Animation" id="Animation_3nwrp"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CostLabel:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_0f721"]
-resource_name = "cost_hide"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CostLabel:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.26666665),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0.189, 0.189), Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_nqv7c"]
-resource_name = "cost_shows"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CostLabel:scale")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.03333333, 0.19999999, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0.1, 0.1), Vector2(0.224, 0.224), Vector2(0.18916087, 0.18916087)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_0f721"]
-_data = {
-&"RESET": SubResource("Animation_3nwrp"),
-&"cost_hide": SubResource("Animation_0f721"),
-&"cost_shows": SubResource("Animation_nqv7c")
-}
 
 [node name="Node2D" type="Node2D" unique_id=483126462 node_paths=PackedStringArray("clickable_component")]
 script = ExtResource("1_l184s")
@@ -109,6 +56,7 @@ scale = Vector2(0.37109375, 0.37109375)
 texture = ExtResource("3_tk4hb")
 
 [node name="CostLabel" type="Sprite2D" parent="View" unique_id=548212634]
+z_index = 11
 position = Vector2(-1.0000002, -1.0000004)
 rotation = -1.3508848
 scale = Vector2(1e-05, 1e-05)
@@ -155,6 +103,6 @@ shader_material = ExtResource("4_mbx83")
 target_node = NodePath("../BasicPlants")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="View" unique_id=498449913 node_paths=PackedStringArray("mouse_enter_area_component")]
-libraries/ = SubResource("AnimationLibrary_0f721")
+libraries/ = ExtResource("14_0f721")
 script = ExtResource("14_nqv7c")
 mouse_enter_area_component = NodePath("../MouseEnterAreaComponent")

@@ -11,6 +11,7 @@ func play():
 	get_tree().get_root().add_child(player)
 	
 	player.stream = sound
+	player.process_mode = Node.PROCESS_MODE_ALWAYS
 	player.pitch_scale += randf_range(-delta_pitch,delta_pitch)
 	player.play()
 	

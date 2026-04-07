@@ -8,7 +8,7 @@ func _ready() -> void:
 	set_seed(initial_cord)
 
 func set_seed(cord):
-	if tile_map_layer_plants.get_cell_tile_data(cord):
+	if tile_map_layer_plants.get_cell_source_id(cord) != -1:
 		return
 	tile_map_layer_plants.set_cell(cord,7,Vector2i(0,0),2)
 	await get_tree().process_frame

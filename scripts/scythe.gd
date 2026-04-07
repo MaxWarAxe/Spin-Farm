@@ -3,6 +3,8 @@ extends RigidBody2D
 @export var pivot_point : Marker2D
 @export var pin_joint : PinJoint2D
 
+
+
 var last_rotation = 0
 func _physics_process(delta: float) -> void:
 	#pin_joint.global_position = pivot_point.global_position
@@ -14,6 +16,7 @@ func change_scale(scale_mul):
 		child.scale.x = child.scale.x * scale_mul
 		child.scale.y = child.scale.y * scale_mul
 func _ready():
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	change_scale(start_scale)
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_up"):

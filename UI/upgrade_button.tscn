@@ -1,0 +1,242 @@
+[gd_scene format=3 uid="uid://d2oe5e7ej62g5"]
+
+[ext_resource type="Script" uid="uid://c1015tn0w8eu2" path="res://UI/upgrade_button.gd" id="1_jlsmv"]
+[ext_resource type="Texture2D" uid="uid://bc05db64v26d1" path="res://sprites/Спрайт-0001.png" id="2_5sh7n"]
+[ext_resource type="FontFile" uid="uid://dgri8tyapxmis" path="res://fonts/VaporVibes.otf" id="3_gwpum"]
+[ext_resource type="Theme" uid="uid://bmf31mho1mjjt" path="res://addons/sprout_lands_ui/content/sprout_lands_theme.tres" id="4_bp4g0"]
+[ext_resource type="Script" uid="uid://dw6qlikwpplej" path="res://components/sound_spawner.gd" id="5_qd7nf"]
+[ext_resource type="AudioStream" uid="uid://cbdtek13s83eu" path="res://sounds/cash.wav" id="6_0hwup"]
+[ext_resource type="Material" uid="uid://dkk0chyjaa4e0" path="res://shaders/progres_outline.tres" id="7_gwpum"]
+[ext_resource type="Texture2D" uid="uid://bveqttalwvx84" path="res://icon.svg" id="8_gwpum"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4jwkg"]
+font = ExtResource("3_gwpum")
+font_size = 185
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_rgsul"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pbwc4"]
+resource_name = "desc_hide"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.001358e-05, 1.001358e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_c24c7"]
+resource_name = "desc_show"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vgq0q"]
+_data = {
+&"RESET": SubResource("Animation_rgsul"),
+&"desc_hide": SubResource("Animation_pbwc4"),
+&"desc_show": SubResource("Animation_c24c7")
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qd7nf"]
+
+[sub_resource type="Animation" id="Animation_gwpum"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CostLabel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_bp4g0"]
+resource_name = "cost_hide"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CostLabel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26666665),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.8, 0.8), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qd7nf"]
+resource_name = "cost_shows"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CostLabel:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.03333333, 0.19999999, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0.1, 0.1), Vector2(0.9, 0.9), Vector2(0.8, 0.8)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ef40q"]
+_data = {
+&"RESET": SubResource("Animation_gwpum"),
+&"cost_hide": SubResource("Animation_bp4g0"),
+&"cost_shows": SubResource("Animation_qd7nf")
+}
+
+[node name="Control" type="Control" unique_id=1904875400 node_paths=PackedStringArray("sound_spawner")]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -25.0
+offset_top = -26.0
+offset_right = 27.0
+offset_bottom = 26.0
+script = ExtResource("1_jlsmv")
+sound_spawner = NodePath("SoundSpawner")
+max_progress = 10
+
+[node name="CostLabel" type="Sprite2D" parent="." unique_id=279019468]
+position = Vector2(21, 21.910034)
+rotation = -1.3508848
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("2_5sh7n")
+offset = Vector2(64.65, 66)
+
+[node name="CostLabel" type="Label" parent="CostLabel" unique_id=327880098]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.32993
+offset_top = -109.279495
+offset_right = 167.77243
+offset_bottom = 122.720505
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.7853982
+scale = Vector2(0.255, 0.255)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_default_cursor_shape = 2
+text = "11"
+label_settings = SubResource("LabelSettings_4jwkg")
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters_behavior = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="." unique_id=517992720]
+clip_contents = true
+layout_mode = 0
+offset_top = 0.9100342
+offset_right = 52.0
+offset_bottom = 52.910034
+theme = ExtResource("4_bp4g0")
+
+[node name="Panel" type="Panel" parent="." unique_id=771281764]
+layout_mode = 0
+offset_left = -177.0
+offset_top = -118.0
+offset_bottom = 1.0
+scale = Vector2(1e-05, 1e-05)
+pivot_offset_ratio = Vector2(1, 1)
+theme = ExtResource("4_bp4g0")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel" unique_id=2093087533]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 172.0
+offset_bottom = 91.0
+theme_override_fonts/normal_font = ExtResource("3_gwpum")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Panel" unique_id=434145899]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 74.0
+offset_right = 92.0
+offset_bottom = 114.0
+split_offsets = PackedInt32Array(10, 23)
+split_offset = 10
+
+[node name="cur_progres_label" type="Label" parent="Panel/HSplitContainer" unique_id=332365273]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_gwpum")
+text = "0"
+
+[node name="slash" type="Label" parent="Panel/HSplitContainer" unique_id=336741288]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_gwpum")
+text = "/"
+
+[node name="max_progres_label" type="Label" parent="Panel/HSplitContainer" unique_id=354072059]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_gwpum")
+text = "10"
+
+[node name="AnimationPlayerDesc" type="AnimationPlayer" parent="." unique_id=1980593810]
+libraries/ = SubResource("AnimationLibrary_vgq0q")
+
+[node name="SoundSpawner" type="Node2D" parent="." unique_id=770552363]
+process_mode = 3
+script = ExtResource("5_qd7nf")
+sound = ExtResource("6_0hwup")
+metadata/_custom_type_script = "uid://dw6qlikwpplej"
+
+[node name="ProgressBar" type="Sprite2D" parent="." unique_id=1193443797]
+modulate = Color(1, 1, 1, 0.007843138)
+material = ExtResource("7_gwpum")
+position = Vector2(26.000002, 27.000004)
+scale = Vector2(0.43750003, 0.43750006)
+texture = ExtResource("8_gwpum")
+
+[node name="AnimationPlayerCost" type="AnimationPlayer" parent="." unique_id=167081216]
+libraries/ = SubResource("AnimationLibrary_qd7nf")
+libraries/cost = SubResource("AnimationLibrary_ef40q")
+autoplay = &"cost/RESET"
+
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

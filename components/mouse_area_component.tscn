@@ -3,9 +3,10 @@
 [ext_resource type="Script" uid="uid://dvj0gqxp6rpl5" path="res://components/mouse_area_component.gd" id="1_rk1uw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_myhxg"]
-radius = 2.0
+radius = 1.0
 
 [node name="MouseAreaComponent" type="Area2D" unique_id=196723889]
+scale = Vector2(0.24, 0.24)
 script = ExtResource("1_rk1uw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1669567355]

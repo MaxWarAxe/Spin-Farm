@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://csiby7l8ky4fy" path="res://UI/upgrades.gd" id="1_0rc54"]
 [ext_resource type="Theme" uid="uid://bmf31mho1mjjt" path="res://addons/sprout_lands_ui/content/sprout_lands_theme.tres" id="1_bv2nw"]
 [ext_resource type="FontFile" uid="uid://dgri8tyapxmis" path="res://fonts/VaporVibes.otf" id="3_125la"]
+[ext_resource type="PackedScene" uid="uid://d2oe5e7ej62g5" path="res://UI/upgrade_button.tscn" id="4_125la"]
+[ext_resource type="Texture2D" uid="uid://dlt1a5lp3lueq" path="res://sprites/Basic tools and meterials.png" id="5_bk4u5"]
 
 [node name="Upgrades" type="Control" unique_id=1335508404]
 layout_mode = 3
@@ -15,10 +17,10 @@ script = ExtResource("1_0rc54")
 
 [node name="Panel" type="Panel" parent="." unique_id=1665851990]
 layout_mode = 0
-offset_left = 198.0
-offset_top = 137.0
-offset_right = 1091.0
-offset_bottom = 602.0
+offset_left = 206.0
+offset_top = 143.0
+offset_right = 1099.0
+offset_bottom = 608.0
 theme = ExtResource("1_bv2nw")
 
 [node name="Button" type="Button" parent="Panel" unique_id=991528118]
@@ -37,5 +39,42 @@ layout_mode = 0
 offset_left = -156.0
 offset_right = -15.0
 offset_bottom = 465.0
+
+[node name="Button" parent="." unique_id=517992720 instance=ExtResource("4_125la")]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 254.0
+offset_right = 501.0
+offset_bottom = 309.0
+upgrade_description = "Encrease growth speed by 10%"
+cost = 5
+
+[node name="Control" parent="." unique_id=1904875400 instance=ExtResource("4_125la")]
+layout_mode = 0
+offset_left = 576.0
+offset_top = 253.0
+offset_right = 628.0
+offset_bottom = 305.0
+
+[node name="Control2" parent="." unique_id=1102893826 instance=ExtResource("4_125la")]
+layout_mode = 0
+offset_left = 704.0
+offset_top = 252.0
+offset_right = 756.0
+offset_bottom = 304.0
+
+[node name="Control3" parent="." unique_id=1250557009 instance=ExtResource("4_125la")]
+layout_mode = 0
+offset_left = 832.0
+offset_top = 255.0
+offset_right = 884.0
+offset_bottom = 307.0
+
+[node name="BasicToolsAndMeterials" type="Sprite2D" parent="." unique_id=1797674648]
+position = Vector2(474.5, 280)
+scale = Vector2(2.6874962, 2.3749998)
+texture = ExtResource("5_bk4u5")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
 
 [connection signal="pressed" from="Panel/Button" to="." method="_on_button_pressed"]

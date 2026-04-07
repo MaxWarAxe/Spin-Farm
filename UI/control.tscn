@@ -261,6 +261,7 @@ outline_size = 3
 outline_color = Color(0, 0, 0, 1)
 
 [node name="Camera2D" type="Camera2D" unique_id=1187432763]
+process_mode = 3
 position = Vector2(576, 316)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1009812198]
@@ -284,7 +285,7 @@ upgrades = NodePath("upgrades")
 layout_mode = 0
 offset_left = 34.0
 offset_top = 26.0
-offset_right = 193.0
+offset_right = 236.0
 offset_bottom = 124.0
 theme = ExtResource("1_rtouq")
 
@@ -292,14 +293,14 @@ theme = ExtResource("1_rtouq")
 layout_mode = 0
 offset_left = 22.0
 offset_top = -11.0
-offset_right = 139.0
+offset_right = 181.0
 offset_bottom = 33.0
 
 [node name="Button" type="Button" parent="CanvasLayer/Control/Panel" unique_id=890253593]
 layout_mode = 0
 offset_left = 22.0
 offset_top = 46.0
-offset_right = 140.0
+offset_right = 182.0
 offset_bottom = 86.0
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("5_c20no")
@@ -307,6 +308,7 @@ theme_override_font_sizes/font_size = 20
 text = "UPGRADES"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Control" unique_id=253624887]
+process_mode = 3
 libraries/ = SubResource("AnimationLibrary_n77p4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Control" unique_id=1288300625]
@@ -315,10 +317,11 @@ scale = Vector2(2.0714288, 2.0714288)
 sprite_frames = SubResource("SpriteFrames_1r6xj")
 
 [node name="Label" type="Label" parent="CanvasLayer/Control" unique_id=854713024]
+process_mode = 3
 layout_mode = 0
 offset_left = 102.0
 offset_top = 20.0
-offset_right = 168.0
+offset_right = 212.0
 offset_bottom = 56.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_fonts/font = ExtResource("5_c20no")

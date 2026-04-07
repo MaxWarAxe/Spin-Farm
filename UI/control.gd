@@ -2,9 +2,10 @@ extends Control
 @onready var gold_label: Label = $Label
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@export var upgrades : Control
+@export var upgrades : Upgrades
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	Global.gold_changed.connect(change_gold)
 	animation_player.play("shine")
 
@@ -23,4 +24,4 @@ func change_gold():
 
 
 func _on_button_pressed() -> void:
-	upgrades.visible = !upgrades.visible
+	upgrades.appear()
