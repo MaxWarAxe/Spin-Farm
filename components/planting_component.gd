@@ -6,7 +6,17 @@ extends Node2D
 
 func _ready() -> void:
 	set_seed(initial_cord)
+	await get_tree().process_frame
+	first_seed_anim()
 
+func first_seed_anim():
+	var seed = tile_map_layer_plants.get_children().back()
+	seed.cost = 0
+	seed.set_cost_label()
+	var tween = get_tree().create_tween()
+	for i in range(0,10):
+		tween.tween_property(seed,"scale",Vector2(1.5,1.5),0.5)
+		tween.tween_property(seed,"scale",Vector2(1,1),0.5)
 func set_seed(cord):
 	if tile_map_layer_plants.get_cell_source_id(cord) != -1:
 		return
@@ -15,6 +25,7 @@ func set_seed(cord):
 	var seed = tile_map_layer_plants.get_children().back()
 	seed.connect("planted_on_position",set_seeds_around)
 	seed.connect("planted_on_position",set_dirt)
+
 
 func set_seeds_around(cord : Vector2):
 	cord = tile_map_layer_grass.local_to_map(cord)

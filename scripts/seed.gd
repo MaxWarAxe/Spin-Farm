@@ -5,8 +5,11 @@ extends Node2D
 signal bought
 signal planted_on_position
 
-func _ready() -> void:
+func set_cost_label():
 	$View/CostLabel/Label.text = str(cost)
+	
+func _ready() -> void:
+	set_cost_label()
 	clickable_component.connect("clicked",buy)
 	
 func buy():

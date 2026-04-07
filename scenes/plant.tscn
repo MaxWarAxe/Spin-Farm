@@ -114,7 +114,6 @@ explosiveness = 0.31
 process_material = SubResource("ParticleProcessMaterial_cqtiq")
 
 [node name="GrowthParticles" type="GPUParticles2D" parent="PlantView" unique_id=1093451435]
-visible = false
 position = Vector2(0, -4)
 emitting = false
 amount = 16

@@ -72,3 +72,4 @@ tile_map_layer_dirt = NodePath("../TileMapLayerDirt")
 tile_map_layer_plants = NodePath("../TileMapLayerPlants")
 
 [node name="MouseAreaComponent" parent="." unique_id=196723889 instance=ExtResource("7_nakos")]
+visible = false

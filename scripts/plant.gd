@@ -2,4 +2,4 @@ extends Node2D
 class_name Plant
 
 func _ready() -> void:
-	pass
+	Global.append_plant(self)
