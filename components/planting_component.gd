@@ -23,9 +23,15 @@ func set_seed(cord):
 	tile_map_layer_plants.set_cell(cord,7,Vector2i(0,0),2)
 	await get_tree().process_frame
 	var seed = tile_map_layer_plants.get_children().back()
-	seed.connect("planted_on_position",set_seeds_around)
-	seed.connect("planted_on_position",set_dirt)
+	seed.connect("planted",planted)
 
+func planted(plant: Plant):
+	upgrade_plant(plant)
+	set_seeds_around(plant.global_position)
+	set_dirt(plant.global_position)
+
+func upgrade_plant(plant: Plant):
+	pass
 
 func set_seeds_around(cord : Vector2):
 	cord = tile_map_layer_grass.local_to_map(cord)
@@ -33,6 +39,7 @@ func set_seeds_around(cord : Vector2):
 	for pos in surounds_cord:
 		set_seed(pos)
 		await get_tree().process_frame
-func set_dirt(cord:Vector2):
+
+func set_dirt(cord : Vector2):
 	cord = tile_map_layer_grass.local_to_map(cord)
 	tile_map_layer_dirt.set_cells_terrain_connect([cord],0,0,false)

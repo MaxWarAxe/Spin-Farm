@@ -90,8 +90,9 @@ color = Color(0.99215686, 1, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8qc6y"]
 
-[node name="Node2D" type="Node2D" unique_id=2086713414]
+[node name="Node2D" type="Node2D" unique_id=2086713414 node_paths=PackedStringArray("growth_component")]
 script = ExtResource("1_odjdt")
+growth_component = NodePath("GrowthComponent")
 
 [node name="PlantView" type="Node2D" parent="." unique_id=1547114363 node_paths=PackedStringArray("animated_sprite", "growth_component", "cut_particles", "growth_particles")]
 script = ExtResource("2_ptog4")
