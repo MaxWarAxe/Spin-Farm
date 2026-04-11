@@ -27,11 +27,14 @@ func set_seed(cord):
 
 func planted(plant: Plant):
 	upgrade_plant(plant)
+	
+	plant.growth_component.reset()
+	print("plantedddddd")
 	set_seeds_around(plant.global_position)
 	set_dirt(plant.global_position)
 
 func upgrade_plant(plant: Plant):
-	pass
+	UpgradeSystem.upgrade_plant_full(plant)
 
 func set_seeds_around(cord : Vector2):
 	cord = tile_map_layer_grass.local_to_map(cord)

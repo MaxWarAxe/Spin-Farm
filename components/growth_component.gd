@@ -17,4 +17,3 @@ func setup_timer():
 func reset():
 	reseted.emit()
 	setup_timer()
-	growth_timer.start()

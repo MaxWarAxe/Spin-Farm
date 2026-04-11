@@ -4,12 +4,18 @@
 [ext_resource type="Theme" uid="uid://bmf31mho1mjjt" path="res://addons/sprout_lands_ui/content/sprout_lands_theme.tres" id="1_bv2nw"]
 [ext_resource type="FontFile" uid="uid://dgri8tyapxmis" path="res://fonts/VaporVibes.otf" id="3_125la"]
 [ext_resource type="PackedScene" uid="uid://d2oe5e7ej62g5" path="res://UI/upgrade_button.tscn" id="4_125la"]
-[ext_resource type="Script" uid="uid://df4i8y2o57vdf" path="res://upgrades/plant_upgrade.gd" id="5_20lrn"]
+[ext_resource type="Script" uid="uid://df4i8y2o57vdf" path="res://upgrades/growth_time_upgrade.gd" id="5_20lrn"]
 [ext_resource type="Texture2D" uid="uid://dlt1a5lp3lueq" path="res://sprites/Basic tools and meterials.png" id="5_bk4u5"]
+[ext_resource type="Script" uid="uid://cxi185bmhmmfq" path="res://upgrades/scythe_scale_upgrade.gd" id="7_7owkf"]
+[ext_resource type="Texture2D" uid="uid://b8om256muliyl" path="res://UI/coins_shine.png" id="8_iu7ey"]
 
-[sub_resource type="Resource" id="Resource_7owkf"]
+[sub_resource type="Resource" id="Resource_20lrn"]
 script = ExtResource("5_20lrn")
 metadata/_custom_type_script = "uid://df4i8y2o57vdf"
+
+[sub_resource type="Resource" id="Resource_iu7ey"]
+script = ExtResource("7_7owkf")
+metadata/_custom_type_script = "uid://cxi185bmhmmfq"
 
 [node name="Upgrades" type="Control" unique_id=1335508404]
 layout_mode = 3
@@ -47,40 +53,86 @@ offset_bottom = 465.0
 
 [node name="Button" parent="." unique_id=517992720 instance=ExtResource("4_125la")]
 layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 offset_left = 448.0
-offset_top = 254.0
-offset_right = 501.0
-offset_bottom = 309.0
-upgrade_description = "Encrease growth speed by 10%"
-cost = 5
-upgrade = SubResource("Resource_7owkf")
-
-[node name="Control" parent="." unique_id=1904875400 instance=ExtResource("4_125la")]
-layout_mode = 0
-offset_left = 576.0
 offset_top = 253.0
-offset_right = 628.0
-offset_bottom = 305.0
+offset_right = 501.0
+offset_bottom = 308.0
+grow_horizontal = 1
+grow_vertical = 1
+upgrade_description = "Decreace growth time by 0.4s"
+cost = 5
+upgrade = SubResource("Resource_20lrn")
 
-[node name="Control2" parent="." unique_id=1102893826 instance=ExtResource("4_125la")]
-layout_mode = 0
-offset_left = 704.0
-offset_top = 252.0
-offset_right = 756.0
-offset_bottom = 304.0
-
-[node name="Control3" parent="." unique_id=1250557009 instance=ExtResource("4_125la")]
-layout_mode = 0
-offset_left = 832.0
-offset_top = 255.0
-offset_right = 884.0
-offset_bottom = 307.0
-
-[node name="BasicToolsAndMeterials" type="Sprite2D" parent="." unique_id=1797674648]
-position = Vector2(474.5, 280)
+[node name="BasicToolsAndMeterials" type="Sprite2D" parent="Button" unique_id=1797674648]
+position = Vector2(26.5, 26)
 scale = Vector2(2.6874962, 2.3749998)
 texture = ExtResource("5_bk4u5")
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
+
+[node name="Control" parent="." unique_id=1904875400 instance=ExtResource("4_125la")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 576.0
+offset_top = 253.0
+offset_right = 628.0
+offset_bottom = 305.0
+grow_horizontal = 1
+grow_vertical = 1
+upgrade_description = "Increace scythe size by 10%"
+upgrade = SubResource("Resource_iu7ey")
+
+[node name="BasicToolsAndMeterials" type="Sprite2D" parent="Control" unique_id=2104843226]
+position = Vector2(24, 27)
+scale = Vector2(2.249998, 2.249998)
+texture = ExtResource("5_bk4u5")
+region_enabled = true
+region_rect = Rect2(32, 0, 16, 16)
+
+[node name="Control2" parent="." unique_id=1102893826 instance=ExtResource("4_125la")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 702.0
+offset_top = 254.0
+offset_right = 754.0
+offset_bottom = 306.0
+grow_horizontal = 1
+grow_vertical = 1
+upgrade_description = "Plant gives more gold"
+
+[node name="Control3" parent="." unique_id=1250557009 instance=ExtResource("4_125la")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 832.0
+offset_top = 255.0
+offset_right = 884.0
+offset_bottom = 307.0
+grow_horizontal = 1
+grow_vertical = 1
+upgrade_description = "Harvesting gives more plants"
+
+[node name="CoinsShine" type="Sprite2D" parent="." unique_id=1059809138]
+position = Vector2(728, 280)
+scale = Vector2(2.5476806, 2.4574664)
+texture = ExtResource("8_iu7ey")
+region_enabled = true
+region_rect = Rect2(32, 0, 15, 14)
 
 [connection signal="pressed" from="Panel/Button" to="." method="_on_button_pressed"]

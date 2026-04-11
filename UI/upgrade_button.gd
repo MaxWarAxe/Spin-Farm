@@ -30,7 +30,7 @@ func check_buy():
 		sound_spawner.play()
 		Global.add_gold(-cost)
 		if upgrade:
-			upgrade.upgrade()
+			upgrade.append()
 		strategy_after_buy()
 		change_ui()
 func _ready() -> void:

@@ -1,5 +1,4 @@
 extends Resource
 class_name Upgrade
-
-func upgrade():
+func append():
 	pass
